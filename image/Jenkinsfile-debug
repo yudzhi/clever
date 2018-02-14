@@ -1,0 +1,15 @@
+pipeline {
+  agent any
+  parameters {
+    string(name: 'IMAGE_NAME', defaultValue: '${GWBT_REPO_NAME}_${GWBT_RELEASE_TAG_NAME}_${GWBT_RELEASE_PUBLISHED_AT}.img', description: 'IMAGE_NAME')
+  }
+  stages {
+    stage('Test vars') {
+      when { environment name: 'GWBT_TRIGGER', value: 'release' }
+      steps {
+        build job: 'urpylka--clever-release', parameters: [[$class: 'StringParameterValue', name: 'IMAGE_NAME', value: 'hello'], [$class: 'StringParameterValue', name: 'GWBT_RELEASE_ID', value: '$GWBT_RELEASE_ID'], [$class: 'StringParameterValue', name: 'GWBT_RELEASE_BODY', value: '$GWBT_RELEASE_BODY'], [$class: 'StringParameterValue', name: 'GWBT_RELEASE_TAG', value: '$GWBT_RELEASE_TAG']]
+        sh "echo ${params.IMAGE_NAME}"
+      }
+    }
+  }
+}

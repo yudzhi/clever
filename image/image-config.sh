@@ -85,7 +85,7 @@ resize_fs() {
 publish_image() {
 
 # STATIC
-# TEMPLATE: publish_image $JENKINS_HOME $IMAGE_NAME $WORKSPACE $CONFIG_FILE $RELEASE_ID $RELEASE_BODY
+# TEMPLATE: publish_image $BUILD_DIRECTORY $IMAGE_NAME $WORKSPACE $CONFIG_FILE $RELEASE_ID $RELEASE_BODY
 
 # https://developer.github.com/v3/repos/releases/
 #RELEASE_BODY="### Changelog\n* Add /boot/cmdline.txt net.ifnames=0 https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/\n* Updated cophelper\n* Installed copstat"
@@ -95,6 +95,7 @@ publish_image() {
     && echo 'Upload image' \
     && local IMAGE_LINK=$($3/image/yadisk.py $1/$4 $1/$2.zip) \
     && local IMAGE_SIZE=$(du -sh $1/$2.zip | awk '{ print $1 }') \
+    && echo "Make downloads in GH-release" \
     && $3/image/git_release.py $1/$4 $5 $6 $2 $IMAGE_LINK $IMAGE_SIZE
 }
 
@@ -463,6 +464,7 @@ echo "\$3: $3"
 echo "\$4: $4"
 echo "\$5: $5"
 echo "\$6: $6"
+echo "\$7: $7"
 
 
 # test_docker
@@ -481,6 +483,9 @@ case "$1" in
     resize_fs $2 $3 $4 $5;;
 
   publish_image) # publish_image $JENKINS_HOME $IMAGE_NAME $WORKSPACE $CONFIG_FILE $RELEASE_ID $RELEASE_BODY
+    publish_image $2 $3 $4 $5 $6 $7;;
+
+  publish_image2) # publish_image $JENKINS_HOME $IMAGE_NAME $WORKSPACE $CONFIG_FILE $RELEASE_ID $RELEASE_BODY
     publish_image $2 $3 $4 $5 $6 $7;;
 
   execute) # execute $IMAGE $PREFIX_PATH $DEV_ROOTFS $DEV_BOOT $EXECUTE_FILE
