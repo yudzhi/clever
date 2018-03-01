@@ -1,3 +1,28 @@
+<div style="text-align:center"><img align="center" src="http://clever.copterexpress.com/clever.jpg"></div>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="http://clever.copterexpress.com/main.css">
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	</head>
+	<body>
+		<h1>CLEVER</h1>
+		<div class="subtitle">EDUCATIONAL DRONE KIT FOR HIGH SCHOOL STUDENTS</div>
+		<div style="text-align:center"><img align="center" src="http://clever.copterexpress.com/clever.jpg"></div>
+		<div class="links">
+			<a href="CLEVER%20Assembly%20Manual%20v1.0.pdf">Assembly Manual</a>
+			<a href="OpenPilot-RELEASE-15.02.02-win32.exe">OpenPilot GCS v15.02</a>
+		</div>
+	</body>
+</html>
+
+
+
 Клевер
 ======
 
