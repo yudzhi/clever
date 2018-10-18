@@ -6,7 +6,7 @@
 
 ## Включение
 
-А данный момент для использования Optical Flow необходима [кастомная прошивка PX4](https://yadi.sk/d/D_dOnsNcezkEog).
+А данный момент для использования Optical Flow необходима [кастомная прошивка PX4](https://yadi.sk/d/KaxaIhohu4V8XA).
 
 Необходимо использования дальномера. При использовании дальномера STM vl53l1x, необходимо подключить его к Raspberry Pi по I2C и включить его в `~/catkin_ws/src/clever/clever/launch/clever.launch`:
 
@@ -27,7 +27,7 @@
 * `SYS_MC_EST_GROUP` – 2 (EKF2).
 * `EKF2_AID_MASK` – use optical flow.
 * `EKF2_OF_DELAY` – 0.
-* `EKF2_OF_QMIN` – 30.
+* `EKF2_OF_QMIN` – 20.
 * `EKF2_HGT_MODE` – range sensor (ремменд.).
 
 ## Полет в POSCTL
